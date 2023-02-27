@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "McDLabelEditor.WPF", "McDLabelEditor.WPF\McDLabelEditor.WPF.csproj", "{20DAD249-E62E-4CD8-B963-2E3CE6C1FD84}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{20DAD249-E62E-4CD8-B963-2E3CE6C1FD84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20DAD249-E62E-4CD8-B963-2E3CE6C1FD84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20DAD249-E62E-4CD8-B963-2E3CE6C1FD84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20DAD249-E62E-4CD8-B963-2E3CE6C1FD84}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E45822BF-57A7-4F99-9AA6-DB9969F2821B}
+	EndGlobalSection
+EndGlobal
