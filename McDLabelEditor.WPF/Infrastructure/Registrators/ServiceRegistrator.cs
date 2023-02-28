@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using McDLabelEditor.WPF.Services;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace McDLabelEditor.WPF.Infrastructure.Registrators;
 
 internal static class ServiceRegistrator
 {
-    public static IServiceCollection AddServices(this IServiceCollection services) => services;
+    public static IServiceCollection AddServices(this IServiceCollection services) => services
+        .AddSingleton<ViewNavigationService>();
 }

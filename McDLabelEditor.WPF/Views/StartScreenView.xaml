@@ -5,6 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:McDLabelEditor.WPF.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:McDLabelEditor.WPF.ViewModels"
+    d:DataContext="{d:DesignInstance {x:Type vm:StartScreenViewModel}}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     FontSize="16"
@@ -18,11 +20,22 @@
                 Margin="0,10"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                FontSize="45"
+                FontSize="65"
                 Foreground="#666666"
                 Text="Hello" />
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="" />
+            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                <TextBlock Foreground="#222222" Text="click to " />
+                <Button Content="select files" />
+            </StackPanel>
+            <TextBlock
+                Margin="0,5"
+                HorizontalAlignment="Center"
+                FontWeight="Bold"
+                Foreground="#222222"
+                Text="or" />
+            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                <TextBlock Foreground="#222222" Text="create a " />
+                <Button Command="{Binding OpenMainEditorCommand}" Content="new file" />
             </StackPanel>
         </StackPanel>
     </Grid>

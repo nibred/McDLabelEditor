@@ -6,4 +6,7 @@
     <DataTemplate DataType="{x:Type vm:StartScreenViewModel}">
         <views:StartScreenView DataContext="{Binding}" />
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:MainEditorViewModel}">
+        <views:MainEditorView DataContext="{Binding}" />
+    </DataTemplate>
 </ResourceDictionary>
