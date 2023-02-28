@@ -6,6 +6,13 @@
     xmlns:vmb="clr-namespace:McDLabelEditor.WPF.ViewModels.Base"
     StartupUri="Views/Windows/MainWindow.xaml">
     <Application.Resources>
-        <vmb:ViewModelLocator x:Key="Locator" />
+        <ResourceDictionary>
+            <vmb:ViewModelLocator x:Key="Locator" />
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Templates/ViewDataTemplates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

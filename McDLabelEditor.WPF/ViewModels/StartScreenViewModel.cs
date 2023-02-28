@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace McDLabelEditor.WPF.ViewModels;
 
-internal class MainViewModel : ViewModelBase
+internal class StartScreenViewModel : ViewModelBase
 {
-    private ViewModelBase _currentVM = new StartScreenViewModel();
-    public ViewModelBase CurrentVM { get => _currentVM; set => Set(ref _currentVM, value); }
+
 }
