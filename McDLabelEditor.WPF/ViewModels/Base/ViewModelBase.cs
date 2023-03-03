@@ -20,4 +20,5 @@ internal class ViewModelBase : INotifyPropertyChanged
         OnPropertyChanged(propertyName);
         return true;
     }
+    protected virtual void Dispose() { }
 }

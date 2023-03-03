@@ -12,20 +12,18 @@ namespace McDLabelEditor.WPF.ViewModels;
 
 internal class StartScreenViewModel : ViewModelBase
 {
-    private readonly ViewNavigationService _viewNavigationService;
-    private IEnumerable<string>? _selectedFiles;
-
     public ICommand OpenMainEditorCommand { get; }
     public ICommand SelectFilesCommand { get; }
-    public StartScreenViewModel(ViewNavigationService viewNavigationService, FileDialogService fileDialogService, MainEditorViewModel mainEditorViewModel)
+    public StartScreenViewModel(ViewNavigationService viewNavigationService,
+                                XmlService xmlService,
+                                MainEditorViewModel mainEditorViewModel)
     {
-        _viewNavigationService = viewNavigationService;
-        OpenMainEditorCommand = new RelayCommand(o => _viewNavigationService.CurrentVM = mainEditorViewModel);
+        OpenMainEditorCommand = new RelayCommand(o => viewNavigationService.CurrentVM = mainEditorViewModel);
         SelectFilesCommand = new RelayCommand(o =>
         {
-            if (fileDialogService.OpenFiles(out _selectedFiles))
+            if (xmlService.OpenXmlFiles())
             {
-                viewNavigationService.CurrentVM = mainEditorViewModel;
+                OpenMainEditorCommand.Execute(null);
             }
         });
     }

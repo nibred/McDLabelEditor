@@ -1,4 +1,5 @@
-﻿using McDLabelEditor.WPF.ViewModels.Base;
+﻿using McDLabelEditor.WPF.Services;
+using McDLabelEditor.WPF.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,4 +10,11 @@ namespace McDLabelEditor.WPF.ViewModels;
 
 internal class MainEditorViewModel : ViewModelBase
 {
+    private readonly XmlService _xmlService;
+    public string Test => _xmlService.ValidXmlDocuments.Count.ToString();
+
+    public MainEditorViewModel(XmlService xmlService)
+    {
+        _xmlService = xmlService;
+    }
 }

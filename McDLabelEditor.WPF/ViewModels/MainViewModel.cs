@@ -19,4 +19,9 @@ internal class MainViewModel : ViewModelBase
         _viewNavigationService.CurrentViewModelChanged += _viewNavigationService_CurrentViewModelChanged;
     }
     private void _viewNavigationService_CurrentViewModelChanged() => OnPropertyChanged(nameof(CurrentVM));
+    protected override void Dispose()
+    {
+        _viewNavigationService.CurrentViewModelChanged -= _viewNavigationService_CurrentViewModelChanged;
+        base.Dispose();
+    }
 }
