@@ -18,6 +18,5 @@ internal class MainViewModel : ViewModelBase
         _viewNavigationService.CurrentVM = startScreenViewModel;
         _viewNavigationService.CurrentViewModelChanged += _viewNavigationService_CurrentViewModelChanged;
     }
-
     private void _viewNavigationService_CurrentViewModelChanged() => OnPropertyChanged(nameof(CurrentVM));
 }

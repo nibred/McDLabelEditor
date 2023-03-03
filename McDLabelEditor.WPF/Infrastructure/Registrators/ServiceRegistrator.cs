@@ -11,5 +11,6 @@ namespace McDLabelEditor.WPF.Infrastructure.Registrators;
 internal static class ServiceRegistrator
 {
     public static IServiceCollection AddServices(this IServiceCollection services) => services
-        .AddSingleton<ViewNavigationService>();
+        .AddSingleton<ViewNavigationService>()
+        .AddSingleton<FileDialogService>();
 }
