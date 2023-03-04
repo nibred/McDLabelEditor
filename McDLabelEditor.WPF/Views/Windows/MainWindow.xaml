@@ -21,7 +21,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="30" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="20" />
             </Grid.RowDefinitions>
             <ContentControl Grid.Row="1" Content="{Binding CurrentVM}" />
         </Grid>

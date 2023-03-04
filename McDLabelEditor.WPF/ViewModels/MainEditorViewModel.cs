@@ -11,8 +11,6 @@ namespace McDLabelEditor.WPF.ViewModels;
 internal class MainEditorViewModel : ViewModelBase
 {
     private readonly XmlService _xmlService;
-    public string Test => _xmlService.ValidXmlDocuments.Count.ToString();
-
     public MainEditorViewModel(XmlService xmlService)
     {
         _xmlService = xmlService;

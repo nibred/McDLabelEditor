@@ -7,13 +7,200 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:McDLabelEditor.WPF.ViewModels"
     d:DataContext="{d:DesignInstance {x:Type vm:MainEditorViewModel}}"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    d:DesignHeight="750"
+    d:DesignWidth="1024"
     mc:Ignorable="d">
     <Grid>
-        <TextBlock
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="70" />
+        </Grid.RowDefinitions>
+        <TextBox
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            Width="300"
+            Height="20"
+            Margin="5"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Text="{Binding Test}" />
+            VerticalAlignment="Center" />
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <ListBox Grid.Row="0" Margin="5,2" />
+                <Button
+                    Grid.Row="1"
+                    Margin="5"
+                    Content="Add label" />
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Border
+                    Grid.Column="1"
+                    Width="150"
+                    Height="150"
+                    Margin="10"
+                    Background="DarkGray"
+                    CornerRadius="10" />
+                <Grid Grid.Row="1" Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="10,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Text="Name:" />
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="3" />
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Margin="10,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Text="First message:" />
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        Margin="3" />
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="10,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Text="Second message:" />
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Margin="3" />
+                    <TextBlock
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Margin="10,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Text="Expired days 1:" />
+                    <TextBox
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Margin="3" />
+                    <TextBlock
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Margin="10,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Text="Expired days 2:" />
+                    <TextBox
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        Margin="3" />
+                    <TextBlock
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        Margin="10,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Text="Expired hours 2:" />
+                    <TextBox
+                        Grid.Row="3"
+                        Grid.Column="3"
+                        Margin="3" />
+                    <TextBlock
+                        Grid.Row="4"
+                        Grid.Column="2"
+                        Margin="10,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Text="Expired minutes 2:" />
+                    <TextBox
+                        Grid.Row="4"
+                        Grid.Column="3"
+                        Margin="3" />
+                    <TextBlock
+                        Grid.Row="5"
+                        Grid.Column="2"
+                        Margin="10,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Text="Expired messages 2:" />
+                    <TextBox
+                        Grid.Row="5"
+                        Grid.Column="3"
+                        Margin="3" />
+                    <TextBlock
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Margin="10,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Text="Expired hours 1:" />
+                    <TextBox
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Margin="3" />
+                    <TextBlock
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Margin="10,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Text="Expired minutes 1:" />
+                    <TextBox
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Margin="3" />
+                    <TextBlock
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Margin="10,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Text="Expired messages 1:" />
+                    <TextBox
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Margin="3" />
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="10,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Text="Category:" />
+                    <ComboBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="3" />
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

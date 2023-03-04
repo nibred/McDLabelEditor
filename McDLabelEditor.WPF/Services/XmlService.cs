@@ -11,7 +11,7 @@ namespace McDLabelEditor.WPF.Services;
 
 internal class XmlService
 {
-    private FileDialogService _fileDialogService;
+    private readonly FileDialogService _fileDialogService;
     private List<XmlDocument> _validXmlDocuments;
     public List<XmlDocument> ValidXmlDocuments => _validXmlDocuments;
 
@@ -30,13 +30,14 @@ internal class XmlService
     }
     private bool IsValidFiles(IEnumerable<string> xmlFiles)
     {
+        _validXmlDocuments.Clear();
         foreach (var xml in xmlFiles)
         {
             var document = new XmlDocument();
             document.Load(xml);
             bool checkRootElement = document.DocumentElement?.Name == "LabelDataFile";
-            bool checkCategories = document.SelectNodes("LabelDataFile/Categories").Count > 0;
-            bool checkLabels = document.SelectNodes("LabelDataFile/Labels").Count > 0;
+            bool checkCategories = document.SelectNodes("LabelDataFile/Categories")?.Count > 0;
+            bool checkLabels = document.SelectNodes("LabelDataFile/Labels")?.Count > 0;
             if (checkRootElement && checkCategories && checkLabels)
             {
                 _validXmlDocuments.Add(document);
