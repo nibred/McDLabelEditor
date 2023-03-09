@@ -13,17 +13,22 @@ namespace McDLabelEditor.WPF.ViewModels;
 internal class MainEditorViewModel : ViewModelBase
 {
     private readonly XmlService _xmlService;
-    private ObservableCollection<Item> _testOC;
-    public ObservableCollection<Item> TestOC => _testOC;
+    private ObservableCollection<Item> _testItems;
+    public ObservableCollection<Item> TestItems => _testItems;
+    private ObservableCollection<Category> _testCategory;
+    public ObservableCollection<Category> TestCategory => _testCategory;
     public MainEditorViewModel(XmlService xmlService)
     {
         _xmlService = xmlService;
-        _testOC = new ObservableCollection<Item>();
+    }
+    public MainEditorViewModel() : base() // design time constructor
+    {
+        _testItems = new ObservableCollection<Item>();
         for (int i = 0; i < 50; i++)
         {
-            TestOC.Add(new Item
+            TestItems.Add(new Item
             {
-                Name = $"Item {i}",
+                Name = $"Item {i + 1}",
                 Category = "chleb",
                 Exp1Days = "0",
                 Exp1Hours = "4",
@@ -34,6 +39,17 @@ internal class MainEditorViewModel : ViewModelBase
                 Line1st = $"Item {i}",
                 Line2nd = "Line2nd",
                 Format = ""
+            });
+        }
+        _testCategory = new ObservableCollection<Category>();
+        for (int i = 0; i < 5; i++)
+        {
+            TestCategory.Add(new Category
+            {
+                Color = "#c5be97",
+                Name = $"Category {i + 1}",
+                Printer = "",
+                PrintTemplate = ""
             });
         }
     }
