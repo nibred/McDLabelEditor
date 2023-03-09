@@ -10,7 +10,7 @@ namespace McDLabelEditor.WPF.Models;
 internal class Item
 {
     public string Name { get; set; }
-    public Category Category { get; set; }
+    public string Category { get; set; }
     public string Exp1Days { get; set; }
     public string Exp1Hours { get; set; }
     public string Exp1Minutes { get; set; }

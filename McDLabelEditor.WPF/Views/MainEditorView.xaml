@@ -12,195 +12,225 @@
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="2*" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="70" />
         </Grid.RowDefinitions>
-        <TextBox
+        <Button
+            x:Name="ButtonSave"
             Grid.Row="0"
-            Grid.ColumnSpan="2"
-            Width="300"
-            Height="20"
-            Margin="5"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center" />
-        <Grid Grid.Row="1">
+            Width="100"
+            Margin="10,3"
+            HorizontalAlignment="Right"
+            Content="Save" />
+        <Grid Grid.Row="1" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="3*" />
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="auto" />
-                </Grid.RowDefinitions>
-                <ListBox Grid.Row="0" Margin="5,2" />
-                <Button
-                    Grid.Row="1"
-                    Margin="5"
-                    Content="Add label" />
-            </Grid>
+            <Border
+                Grid.Column="0"
+                Width="150"
+                Height="150"
+                Margin="10"
+                Background="DarkGray"
+                CornerRadius="10" />
             <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <Border
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="10,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Text="Name:" />
+                <TextBox
+                    Grid.Row="0"
                     Grid.Column="1"
-                    Width="150"
-                    Height="150"
-                    Margin="10"
-                    Background="DarkGray"
-                    CornerRadius="10" />
-                <Grid Grid.Row="1" Margin="10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <TextBlock
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Margin="10,0"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Text="Name:" />
-                    <TextBox
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        Margin="3" />
-                    <TextBlock
-                        Grid.Row="0"
-                        Grid.Column="2"
-                        Margin="10,0"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Text="First message:" />
-                    <TextBox
-                        Grid.Row="0"
-                        Grid.Column="3"
-                        Margin="3" />
-                    <TextBlock
-                        Grid.Row="1"
-                        Grid.Column="2"
-                        Margin="10,0"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Text="Second message:" />
-                    <TextBox
-                        Grid.Row="1"
-                        Grid.Column="3"
-                        Margin="3" />
-                    <TextBlock
-                        Grid.Row="2"
-                        Grid.Column="0"
-                        Margin="10,0"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Text="Expired days 1:" />
-                    <TextBox
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        Margin="3" />
-                    <TextBlock
-                        Grid.Row="2"
-                        Grid.Column="2"
-                        Margin="10,0"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Text="Expired days 2:" />
-                    <TextBox
-                        Grid.Row="2"
-                        Grid.Column="3"
-                        Margin="3" />
-                    <TextBlock
-                        Grid.Row="3"
-                        Grid.Column="2"
-                        Margin="10,0"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Text="Expired hours 2:" />
-                    <TextBox
-                        Grid.Row="3"
-                        Grid.Column="3"
-                        Margin="3" />
-                    <TextBlock
-                        Grid.Row="4"
-                        Grid.Column="2"
-                        Margin="10,0"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Text="Expired minutes 2:" />
-                    <TextBox
-                        Grid.Row="4"
-                        Grid.Column="3"
-                        Margin="3" />
-                    <TextBlock
-                        Grid.Row="5"
-                        Grid.Column="2"
-                        Margin="10,0"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Text="Expired messages 2:" />
-                    <TextBox
-                        Grid.Row="5"
-                        Grid.Column="3"
-                        Margin="3" />
-                    <TextBlock
-                        Grid.Row="3"
-                        Grid.Column="0"
-                        Margin="10,0"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Text="Expired hours 1:" />
-                    <TextBox
-                        Grid.Row="3"
-                        Grid.Column="1"
-                        Margin="3" />
-                    <TextBlock
-                        Grid.Row="4"
-                        Grid.Column="0"
-                        Margin="10,0"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Text="Expired minutes 1:" />
-                    <TextBox
-                        Grid.Row="4"
-                        Grid.Column="1"
-                        Margin="3" />
-                    <TextBlock
-                        Grid.Row="5"
-                        Grid.Column="0"
-                        Margin="10,0"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Text="Expired messages 1:" />
-                    <TextBox
-                        Grid.Row="5"
-                        Grid.Column="1"
-                        Margin="3" />
-                    <TextBlock
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        Margin="10,0"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Text="Category:" />
-                    <ComboBox
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Margin="3" />
-                </Grid>
+                    Margin="3" />
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Margin="10,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Text="Expired days 1:" />
+                <TextBox
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Margin="3" />
+                <TextBlock
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Margin="10,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Text="Expired hours 1:" />
+                <TextBox
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Margin="3" />
+                <TextBlock
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Margin="10,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Text="Expired minutes 1:" />
+                <TextBox
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Margin="3" />
+                <TextBlock
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Margin="10,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Text="Expired messages 1:" />
+                <TextBox
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    Margin="3" />
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="10,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Text="Category:" />
+                <ComboBox
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="3" />
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Margin="10,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Text="First message:" />
+                <TextBox
+                    Grid.Row="0"
+                    Grid.Column="3"
+                    Margin="3" />
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Margin="10,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Text="Second message:" />
+                <TextBox
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    Margin="3" />
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Margin="10,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Text="Expired days 2:" />
+                <TextBox
+                    Grid.Row="2"
+                    Grid.Column="3"
+                    Margin="3" />
+                <TextBlock
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    Margin="10,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Text="Expired hours 2:" />
+                <TextBox
+                    Grid.Row="3"
+                    Grid.Column="3"
+                    Margin="3" />
+                <TextBlock
+                    Grid.Row="4"
+                    Grid.Column="2"
+                    Margin="10,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Text="Expired minutes 2:" />
+                <TextBox
+                    Grid.Row="4"
+                    Grid.Column="3"
+                    Margin="3" />
+                <TextBlock
+                    Grid.Row="5"
+                    Grid.Column="2"
+                    Margin="10,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Text="Expired messages 2:" />
+                <TextBox
+                    Grid.Row="5"
+                    Grid.Column="3"
+                    Margin="3" />
             </Grid>
         </Grid>
+        <ScrollViewer
+            Grid.Row="2"
+            Margin="10"
+            VerticalScrollBarVisibility="Auto">
+            <ItemsControl
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                ItemsSource="{Binding TestOC}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            Width="125"
+                            Height="45"
+                            Margin="10"
+                            Background="#FF48ACB3"
+                            CornerRadius="10"
+                            SnapsToDevicePixels="True">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                Text="{Binding Category}" />
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Style.Triggers>
+                                        <Trigger Property="Border.IsMouseOver" Value="True">
+                                            <Setter Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect
+                                                        BlurRadius="15"
+                                                        Opacity=".7"
+                                                        ShadowDepth="0" />
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </UserControl>
