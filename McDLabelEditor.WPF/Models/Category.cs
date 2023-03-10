@@ -13,4 +13,12 @@ internal class Category
     public string Color { get; set; }
     public string PrintTemplate { get; set; }
     public string Printer { get; set; }
+    public override bool Equals(object? obj)
+    {
+        return Name == ((Category)obj).Name;
+    }
+    public override int GetHashCode()
+    {
+        return Name.GetHashCode();
+    }
 }

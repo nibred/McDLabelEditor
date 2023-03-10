@@ -1,4 +1,5 @@
-﻿using McDLabelEditor.WPF.Utils;
+﻿using McDLabelEditor.WPF.Models;
+using McDLabelEditor.WPF.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,28 +14,82 @@ internal class XmlService
 {
     private readonly FileDialogService _fileDialogService;
     private List<XmlDocument> _validXmlDocuments;
-    public List<XmlDocument> ValidXmlDocuments => _validXmlDocuments;
+    private List<Item> _items;
+    private HashSet<Category> _categories;
+    public List<Item> Items => _items;
+    public HashSet<Category> Categories => _categories;
 
     public XmlService(FileDialogService fileDialogService)
     {
         _fileDialogService = fileDialogService;
         _validXmlDocuments = new();
+        _items = new();
+        _categories = new();
     }
     public bool OpenXmlFiles()
     {
         if (_fileDialogService.OpenFiles(out IEnumerable<string> selectedXmlFiles))
         {
-            return IsValidFiles(selectedXmlFiles);
+            if (IsValidFiles(selectedXmlFiles))
+            {
+                LoadItems();
+                LoadCategories();
+                return true;
+            }
         }
         return false;
     }
+    private void LoadItems()
+    {
+        foreach (XmlDocument xmlDocument in _validXmlDocuments)
+        {
+            var items = xmlDocument.SelectNodes("LabelDataFile/Labels/Item");
+            foreach (XmlNode item in items)
+            {
+                _items.Add(new Item
+                {
+                    Name = item["Półprodukty"].InnerText,
+                    Category = item["AssignedCategory"].InnerText,
+                    Exp1Days = item["Exp1_dni"].InnerText,
+                    Exp1Hours = item["Exp1_godzin"].InnerText,
+                    Exp1Message = item["Exp1_wiadomość"].InnerText,
+                    Exp1Minutes = item["Exp1_protokół"].InnerText,
+                    Exp2Days = item["Exp2_dni"].InnerText,
+                    Exp2Hours = item["Exp2_godzin"].InnerText,
+                    Exp2Message = item["Exp2_wiadomość"].InnerText,
+                    Exp2Minutes = item["Exp2_protokół"].InnerText,
+                    Format = item["Format"].InnerText,
+                    Line1st = item["linia_1st"].InnerText,
+                    Line2nd = item["linia_2nd"].InnerText
+                });
+            }
+        }
+    }
+    private void LoadCategories()
+    {
+        foreach (XmlDocument xmlDocument in _validXmlDocuments)
+        {
+            var categories = xmlDocument.SelectNodes("LabelDataFile/Categories/AssignedCategory");
+            foreach (XmlNode category in categories)
+            {
+                _categories.Add(new Category
+                {
+                    Name = category["Name"].InnerText,
+                    Color = category["Color"].InnerText,
+                    PrintTemplate = category["PrintTemplate"].InnerText,
+                    Printer = category["Printer"].InnerText
+                });
+            }
+        }
+    }
+
     private bool IsValidFiles(IEnumerable<string> xmlFiles)
     {
         _validXmlDocuments.Clear();
-        foreach (var xml in xmlFiles)
+        foreach (var xmlFile in xmlFiles)
         {
             var document = new XmlDocument();
-            document.Load(xml);
+            document.Load(xmlFile);
             bool checkRootElement = document.DocumentElement?.Name == "LabelDataFile";
             bool checkCategories = document.SelectNodes("LabelDataFile/Categories")?.Count > 0;
             bool checkLabels = document.SelectNodes("LabelDataFile/Labels")?.Count > 0;

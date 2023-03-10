@@ -1,4 +1,5 @@
-﻿using McDLabelEditor.WPF.Models;
+﻿using McDLabelEditor.WPF.Commands;
+using McDLabelEditor.WPF.Models;
 using McDLabelEditor.WPF.Services;
 using McDLabelEditor.WPF.ViewModels.Base;
 using System;
@@ -7,55 +8,44 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using System.Xaml;
 
 namespace McDLabelEditor.WPF.ViewModels;
 
 internal class MainEditorViewModel : ViewModelBase
 {
     private readonly XmlService _xmlService;
-    private ObservableCollection<Item> _testItems;
-    public ObservableCollection<Item> TestItems => _testItems;
-    private ObservableCollection<Category> _testCategory;
-    public ObservableCollection<Category> TestCategory => _testCategory;
+    private ObservableCollection<Item> _items;
+    private ObservableCollection<Category> _categories;
+    public ObservableCollection<Item> Items => _items;
+    public ObservableCollection<Category> Categories => _categories;
+
+    public void AddItems(IEnumerable<Item> items)
+    {
+        foreach (var item in items)
+        {
+            _items.Add(item);
+        }
+    }
+    public void AddCategories(IEnumerable<Category> categories)
+    {
+        foreach (var category in categories)
+        {
+            _categories.Add(category);
+        }
+    }
     public MainEditorViewModel(XmlService xmlService)
     {
         _xmlService = xmlService;
-        _testItems = new ObservableCollection<Item>();
-        for (int i = 0; i < 50; i++)
-        {
-            TestItems.Add(new Item
-            {
-                Name = $"Item {i + 1}",
-                Category = "chleb",
-                Exp1Days = "0",
-                Exp1Hours = "4",
-                Exp1Message = "gotowe",
-                Exp1Minutes = "0",
-                Exp2Message = "koniec",
-                Exp2Days = "2",
-                Line1st = $"Item {i}",
-                Line2nd = "Line2nd",
-                Format = ""
-            });
-        }
-        _testCategory = new ObservableCollection<Category>();
-        for (int i = 0; i < 5; i++)
-        {
-            TestCategory.Add(new Category
-            {
-                Color = $"#{RandomColorGenerator()}",
-                Name = $"Category {i + 1}",
-                Printer = "",
-                PrintTemplate = ""
-            });
-        }
+        _items = new();
+        _categories = new();
     }
     public MainEditorViewModel() : base() // design time constructor
     {
-        _testItems = new ObservableCollection<Item>();
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 40; i++)
         {
-            TestItems.Add(new Item
+            Items.Add(new Item
             {
                 Name = $"Item {i + 1}",
                 Category = "chleb",
@@ -70,10 +60,10 @@ internal class MainEditorViewModel : ViewModelBase
                 Format = ""
             });
         }
-        _testCategory = new ObservableCollection<Category>();
+        _categories = new ObservableCollection<Category>();
         for (int i = 0; i < 7; i++)
         {
-            TestCategory.Add(new Category
+            Categories.Add(new Category
             {
                 Color = $"#{RandomColorGenerator()}",
                 Name = $"Category {i + 1}",
@@ -86,6 +76,9 @@ internal class MainEditorViewModel : ViewModelBase
     {
         Random random = new();
         string chars = "123567890abcdef";
-        return new string(string.Join("", chars.OrderBy(c => random.Next()).Select(c => c)))[..6];
+        string result = string.Empty;
+        for(int i = 0; i < 6; i++)
+            result += chars[random.Next(chars.Length)];
+        return result;
     }
 }

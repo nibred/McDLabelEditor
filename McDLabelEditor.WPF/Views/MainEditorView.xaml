@@ -40,7 +40,7 @@
                                     Visibility="Collapsed" />
                                 <TextBlock
                                     x:Name="text"
-                                    Grid.RowSpan="2"
+                                    Grid.RowSpan="2" TextWrapping="Wrap"
                                     Grid.ColumnSpan="2"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
@@ -278,13 +278,13 @@
                 Background="Transparent"
                 BorderThickness="0"
                 ItemContainerStyle="{StaticResource ListBoxItemStyle1}"
-                ItemsSource="{Binding TestItems}"
+                ItemsSource="{Binding Items}"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                 ScrollViewer.VerticalScrollBarVisibility="Auto"
                 SelectedIndex="0">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <UniformGrid Columns="5" />
+                        <UniformGrid VerticalAlignment="Top" Columns="5" />
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
             </ListBox>
@@ -331,7 +331,7 @@
                     Background="Transparent"
                     BorderThickness="0"
                     ItemContainerStyle="{StaticResource ListBoxItemStyle1}"
-                    ItemsSource="{Binding TestCategory}"
+                    ItemsSource="{Binding Categories}"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                     ScrollViewer.VerticalScrollBarVisibility="Disabled"
                     SelectedIndex="0">

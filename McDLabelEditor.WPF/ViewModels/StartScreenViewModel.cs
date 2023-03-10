@@ -23,6 +23,8 @@ internal class StartScreenViewModel : ViewModelBase
         {
             if (xmlService.OpenXmlFiles())
             {
+                mainEditorViewModel.AddItems(xmlService.Items);
+                mainEditorViewModel.AddCategories(xmlService.Categories);
                 OpenMainEditorCommand.Execute(null);
             }
         });
