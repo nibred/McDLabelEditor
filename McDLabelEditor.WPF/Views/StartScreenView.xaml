@@ -24,20 +24,14 @@
                 FontWeight="Light"
                 Foreground="#666666"
                 Text="Hello" />
-            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                <TextBlock Foreground="#222222" Text="click to " />
-                <Button Command="{Binding SelectFilesCommand}" Content="select files" />
-            </StackPanel>
+            <Button Command="{Binding SelectFilesCommand}" Content="select files" />
             <TextBlock
                 Margin="0,5"
                 HorizontalAlignment="Center"
                 FontWeight="Bold"
                 Foreground="#222222"
-                Text="or" />
-            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                <TextBlock Foreground="#222222" Text="create a " />
-                <Button Command="{Binding OpenMainEditorCommand}" Content="new file" />
-            </StackPanel>
+                Text="or create" />
+            <Button Command="{Binding OpenMainEditorCommand}" Content="new file" />
         </StackPanel>
     </Grid>
 </UserControl>
