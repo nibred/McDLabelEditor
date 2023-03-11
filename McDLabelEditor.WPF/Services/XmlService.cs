@@ -34,6 +34,16 @@ internal class XmlService
             {
                 LoadItems();
                 LoadCategories();
+                if (!_items.IsEmpty() && !_categories.IsEmpty())
+                {
+                    foreach ((Item item, Category category) in _items
+                        .SelectMany(item => _categories
+                        .Where(category => item.Category == category.Name)
+                        .Select(category => (item, category))))
+                        {
+                            item.Color = category.Color;
+                        }
+                }
                 return true;
             }
         }

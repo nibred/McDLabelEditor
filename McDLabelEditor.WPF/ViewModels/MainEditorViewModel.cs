@@ -1,6 +1,7 @@
 ﻿using McDLabelEditor.WPF.Commands;
 using McDLabelEditor.WPF.Models;
 using McDLabelEditor.WPF.Services;
+using McDLabelEditor.WPF.Utils;
 using McDLabelEditor.WPF.ViewModels.Base;
 using System;
 using System.Collections.Generic;
@@ -20,12 +21,28 @@ internal class MainEditorViewModel : ViewModelBase
     private ObservableCollection<Category> _categories;
     private Item _selectedItem;
     private Category _selectedCategory;
-    public ObservableCollection<Item> Items => _items;
+    public ObservableCollection<Item> Items
+    {
+        get
+        {
+            if (_selectedCategory is null)
+            {
+                return _items;
+            }
+            return _items.Where(x => x.Category == SelectedCategory.Name).Select(x => { x.Color = SelectedCategory.Color; return x; }).ToObservableCollection();
+        }
+    }
     public ObservableCollection<Category> Categories => _categories;
-
     public Item SelectedItem { get => _selectedItem; set => Set(ref _selectedItem, value); }
-    public Category SelectedCategory { get => _selectedCategory; set => Set(ref _selectedCategory, value); }
-
+    public Category SelectedCategory 
+    { 
+        get => _selectedCategory; 
+        set
+        {
+            Set(ref _selectedCategory, value);
+            OnPropertyChanged(nameof(Items));
+        }
+    }
 
     public void AddItems(IEnumerable<Item> items) //TODO: one generic method (items/categories)?
     {
@@ -84,7 +101,7 @@ internal class MainEditorViewModel : ViewModelBase
         Random random = new();
         string chars = "123567890abcdef";
         string result = string.Empty;
-        for(int i = 0; i < 6; i++)
+        for (int i = 0; i < 6; i++)
             result += chars[random.Next(chars.Length)];
         return result;
     }

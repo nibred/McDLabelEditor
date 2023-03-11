@@ -22,7 +22,7 @@
                             Height="45"
                             Margin="3,5"
                             Background="{Binding Color,
-                                                 FallbackValue=#aacc45}"
+                                                 TargetNullValue=#aaccbb}"
                             CornerRadius="10">
                             <Grid Margin="5">
                                 <Grid.ColumnDefinitions>
@@ -291,7 +291,8 @@
                 ItemsSource="{Binding Items}"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                 ScrollViewer.VerticalScrollBarVisibility="Auto"
-                SelectedItem="{Binding SelectedItem}">
+                SelectedItem="{Binding SelectedItem}"
+                SelectionMode="Single">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid VerticalAlignment="Top" Columns="5" />
@@ -345,7 +346,8 @@
                     ItemsSource="{Binding Categories}"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                     ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                    SelectedItem="{Binding SelectedCategory}">
+                    SelectedItem="{Binding SelectedCategory}"
+                    SelectionMode="Single">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid Rows="1" />

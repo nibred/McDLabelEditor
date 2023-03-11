@@ -22,4 +22,5 @@ internal class Item
     public string Format { get; set; }
     public string Line1st { get; set; }
     public string Line2nd { get; set; }
+    public string Color { get; set; }
 }
