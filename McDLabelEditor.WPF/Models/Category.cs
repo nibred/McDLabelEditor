@@ -15,7 +15,9 @@ internal class Category
     public string Printer { get; set; }
     public override bool Equals(object? obj)
     {
-        return Name == ((Category)obj).Name;
+        Category? category = obj as Category;
+        if (category is null) return false;
+        return Name == category.Name;
     }
     public override int GetHashCode()
     {

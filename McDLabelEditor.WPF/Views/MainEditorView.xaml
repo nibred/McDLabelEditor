@@ -10,6 +10,7 @@
                                      IsDesignTimeCreatable=True}"
     d:DesignHeight="750"
     d:DesignWidth="1024"
+    FontFamily="Arial"
     mc:Ignorable="d">
     <UserControl.Resources>
         <Style x:Key="ListBoxItemStyle1" TargetType="{x:Type ListBoxItem}">
@@ -24,27 +25,22 @@
                                                  FallbackValue=#aacc45}"
                             CornerRadius="10">
                             <Grid Margin="5">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="*" />
-                                </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
                                 <Button
                                     x:Name="delBtn"
-                                    Grid.Row="0"
                                     Grid.Column="1"
                                     Content="Delete"
                                     Visibility="Collapsed" />
                                 <TextBlock
                                     x:Name="text"
-                                    Grid.RowSpan="2" TextWrapping="Wrap"
-                                    Grid.ColumnSpan="2"
+                                    Grid.Column="0"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Text="{Binding Name}" />
+                                    Text="{Binding Name}"
+                                    TextWrapping="Wrap" />
                             </Grid>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -56,7 +52,7 @@
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="delBtn" Property="Visibility" Value="Visible" />
                                 <Setter TargetName="text" Property="FontWeight" Value="Bold" />
-                                <Setter TargetName="text" Property="FontSize" Value="14" />
+                                <Setter TargetName="text" Property="FontSize" Value="13" />
                                 <Setter TargetName="border" Property="BorderThickness" Value="1" />
                                 <Setter TargetName="border" Property="BorderBrush" Value="#FF312D2D" />
                             </Trigger>
@@ -142,7 +138,8 @@
                 <TextBox
                     Grid.Row="0"
                     Grid.Column="1"
-                    Margin="3" />
+                    Margin="3"
+                    Text="{Binding SelectedItem.Name}" />
                 <TextBlock
                     Grid.Row="2"
                     Grid.Column="0"
@@ -153,7 +150,8 @@
                 <TextBox
                     Grid.Row="2"
                     Grid.Column="1"
-                    Margin="3" />
+                    Margin="3"
+                    Text="{Binding SelectedItem.Exp1Days}" />
                 <TextBlock
                     Grid.Row="3"
                     Grid.Column="0"
@@ -164,7 +162,8 @@
                 <TextBox
                     Grid.Row="3"
                     Grid.Column="1"
-                    Margin="3" />
+                    Margin="3"
+                    Text="{Binding SelectedItem.Exp1Hours}" />
                 <TextBlock
                     Grid.Row="4"
                     Grid.Column="0"
@@ -175,7 +174,8 @@
                 <TextBox
                     Grid.Row="4"
                     Grid.Column="1"
-                    Margin="3" />
+                    Margin="3"
+                    Text="{Binding SelectedItem.Exp1Minutes}" />
                 <TextBlock
                     Grid.Row="5"
                     Grid.Column="0"
@@ -186,7 +186,8 @@
                 <TextBox
                     Grid.Row="5"
                     Grid.Column="1"
-                    Margin="3" />
+                    Margin="3"
+                    Text="{Binding SelectedItem.Exp1Message}" />
                 <TextBlock
                     Grid.Row="1"
                     Grid.Column="0"
@@ -197,7 +198,10 @@
                 <ComboBox
                     Grid.Row="1"
                     Grid.Column="1"
-                    Margin="3" />
+                    Margin="3"
+                    DisplayMemberPath="Name"
+                    ItemsSource="{Binding Categories}"
+                    Text="{Binding SelectedItem.Category}" />
                 <TextBlock
                     Grid.Row="0"
                     Grid.Column="2"
@@ -208,7 +212,8 @@
                 <TextBox
                     Grid.Row="0"
                     Grid.Column="3"
-                    Margin="3" />
+                    Margin="3"
+                    Text="{Binding SelectedItem.Line1st}" />
                 <TextBlock
                     Grid.Row="1"
                     Grid.Column="2"
@@ -219,7 +224,8 @@
                 <TextBox
                     Grid.Row="1"
                     Grid.Column="3"
-                    Margin="3" />
+                    Margin="3"
+                    Text="{Binding SelectedItem.Line2nd}" />
                 <TextBlock
                     Grid.Row="2"
                     Grid.Column="2"
@@ -230,7 +236,8 @@
                 <TextBox
                     Grid.Row="2"
                     Grid.Column="3"
-                    Margin="3" />
+                    Margin="3"
+                    Text="{Binding SelectedItem.Exp2Days}" />
                 <TextBlock
                     Grid.Row="3"
                     Grid.Column="2"
@@ -241,7 +248,8 @@
                 <TextBox
                     Grid.Row="3"
                     Grid.Column="3"
-                    Margin="3" />
+                    Margin="3"
+                    Text="{Binding SelectedItem.Exp2Hours}" />
                 <TextBlock
                     Grid.Row="4"
                     Grid.Column="2"
@@ -252,7 +260,8 @@
                 <TextBox
                     Grid.Row="4"
                     Grid.Column="3"
-                    Margin="3" />
+                    Margin="3"
+                    Text="{Binding SelectedItem.Exp2Minutes}" />
                 <TextBlock
                     Grid.Row="5"
                     Grid.Column="2"
@@ -263,7 +272,8 @@
                 <TextBox
                     Grid.Row="5"
                     Grid.Column="3"
-                    Margin="3" />
+                    Margin="3"
+                    Text="{Binding SelectedItem.Exp2Message}" />
             </Grid>
         </Grid>
         <Border
@@ -281,7 +291,7 @@
                 ItemsSource="{Binding Items}"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                 ScrollViewer.VerticalScrollBarVisibility="Auto"
-                SelectedIndex="0">
+                SelectedItem="{Binding SelectedItem}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid VerticalAlignment="Top" Columns="5" />
@@ -330,11 +340,12 @@
                     HorizontalContentAlignment="Stretch"
                     Background="Transparent"
                     BorderThickness="0"
+                    DisplayMemberPath="Name"
                     ItemContainerStyle="{StaticResource ListBoxItemStyle1}"
                     ItemsSource="{Binding Categories}"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                     ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                    SelectedIndex="0">
+                    SelectedItem="{Binding SelectedCategory}">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid Rows="1" />

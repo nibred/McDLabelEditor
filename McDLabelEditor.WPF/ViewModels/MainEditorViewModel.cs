@@ -18,10 +18,16 @@ internal class MainEditorViewModel : ViewModelBase
     private readonly XmlService _xmlService;
     private ObservableCollection<Item> _items;
     private ObservableCollection<Category> _categories;
+    private Item _selectedItem;
+    private Category _selectedCategory;
     public ObservableCollection<Item> Items => _items;
     public ObservableCollection<Category> Categories => _categories;
 
-    public void AddItems(IEnumerable<Item> items)
+    public Item SelectedItem { get => _selectedItem; set => Set(ref _selectedItem, value); }
+    public Category SelectedCategory { get => _selectedCategory; set => Set(ref _selectedCategory, value); }
+
+
+    public void AddItems(IEnumerable<Item> items) //TODO: one generic method (items/categories)?
     {
         foreach (var item in items)
         {
@@ -43,6 +49,7 @@ internal class MainEditorViewModel : ViewModelBase
     }
     public MainEditorViewModel() : base() // design time constructor
     {
+        _items = new();
         for (int i = 0; i < 40; i++)
         {
             Items.Add(new Item
@@ -72,7 +79,7 @@ internal class MainEditorViewModel : ViewModelBase
             });
         }
     }
-    private string RandomColorGenerator()
+    private string RandomColorGenerator() // only for design time
     {
         Random random = new();
         string chars = "123567890abcdef";
